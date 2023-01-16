@@ -1,5 +1,5 @@
 import React from 'react';
-import { SignInPage } from './pages';
+import { AppliedPage, SignInPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { SignUpPage } from './pages/SignUpPage';
 import { SettingsPage } from './pages/SettingsPage';
@@ -14,6 +14,7 @@ function App() {
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />}/>
         <Route path="/settings" element={<SettingsPage />}/>
+        <Route path="/applied" element={<AppliedPage />}/>
       </Routes>
       <NavbarMobile />
     </div>
