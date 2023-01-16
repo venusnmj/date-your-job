@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import ormconfig from './configs/ormconfig';
 import { ApplicantsModule } from './modules/applicants/applicants.module';
+import { ApplicationsModule } from './modules/applications/applications.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { EmployerListingsModule } from './modules/employer-listings/employer-listings.module';
 import { EmployersModule } from './modules/employers/employers.module';
@@ -30,6 +31,7 @@ import { UsersModule } from './modules/users/users.module';
     AuthModule,
     UsersModule,
     ApplicantsModule,
+    ApplicationsModule,
     EmployersModule,
     EmployerListingsModule,
     TechModule,

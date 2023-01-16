@@ -17,14 +17,14 @@ export class EmployerListingsService {
   // ---------- EmployerListings READ ---------- //
   async getAll(): Promise<EmployerListing[]> {
     return await this.employerListingsRepository.find({
-      relations: ['tech'],
+      relations: ['tech', 'applications', 'employer'],
     });
   }
   async getAllSoftDeleted(): Promise<EmployerListing[]> {
     return (
       await this.employerListingsRepository.find({
         withDeleted: true,
-        relations: ['tech'],
+        relations: ['tech', 'applications', 'employer'],
       })
     ).filter((employerListing) => employerListing.deletedAt != null);
   }
@@ -32,7 +32,7 @@ export class EmployerListingsService {
   async getOneById(employerListingId: number): Promise<EmployerListing> {
     return await this.employerListingsRepository.findOne({
       where: { employerListingId },
-      relations: ['tech'],
+      relations: ['tech', 'applications', 'employer'],
     });
   }
 

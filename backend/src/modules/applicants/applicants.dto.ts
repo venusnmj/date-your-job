@@ -21,6 +21,12 @@ class UpdateApplicantTechDto {
   techId!: number;
 }
 
+class UpdateApplicantApplicationsDto {
+  @IsNotEmpty()
+  @IsInt()
+  applicationId!: number;
+}
+
 // -------------------- CRUD DTO -------------------- //
 export class CreateApplicantDto {
   @IsNotEmpty()
@@ -74,6 +80,12 @@ export class CreateApplicantDto {
   @ValidateNested()
   @Type(() => UpdateApplicantTechDto)
   topTech?: UpdateApplicantTechDto[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested()
+  @Type(() => UpdateApplicantApplicationsDto)
+  applications?: UpdateApplicantApplicationsDto[];
 }
 
 export class UpdateApplicantDto {
@@ -132,4 +144,10 @@ export class UpdateApplicantDto {
   @ValidateNested()
   @Type(() => UpdateApplicantTechDto)
   topTech?: UpdateApplicantTechDto[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested()
+  @Type(() => UpdateApplicantApplicationsDto)
+  applications?: UpdateApplicantApplicationsDto[];
 }

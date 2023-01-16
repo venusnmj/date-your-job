@@ -4,9 +4,13 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToMany,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Application } from './application.entity';
+import { Employer } from './employer.entity';
 import { Tech } from './tech.entity';
 
 @Entity()
@@ -47,4 +51,14 @@ export class EmployerListing {
   tech?: Tech[];
 
   // Applications
+  @OneToMany(() => Application, (application) => application.employerListing, {
+    nullable: true,
+  })
+  applications?: Application[];
+
+  // Listing
+  @ManyToOne(() => Employer, (employer) => employer.listings, {
+    onDelete: 'CASCADE',
+  })
+  employer!: Employer;
 }

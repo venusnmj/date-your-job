@@ -9,6 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Application } from './application.entity';
 import { Tech } from './tech.entity';
 import { User } from './user.entity';
 
@@ -68,7 +69,10 @@ export class Applicant {
   // @OneToOne()
 
   // Applications
-  // @OneToMany()
+  @OneToMany(() => Application, (application) => application.applicant, {
+    nullable: true,
+  })
+  applications?: Application[];
 
   // User
   @OneToOne(() => User, (user) => user.applicant)
