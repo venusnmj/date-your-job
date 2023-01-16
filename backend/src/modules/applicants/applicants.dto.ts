@@ -1,5 +1,6 @@
 import { Type } from 'class-transformer';
 import {
+  IsArray,
   IsInt,
   IsNotEmpty,
   IsOptional,
@@ -12,6 +13,12 @@ class UpdateApplicantUserDto {
   @IsNotEmpty()
   @IsInt()
   userId!: number;
+}
+
+class UpdateApplicantTechDto {
+  @IsNotEmpty()
+  @IsInt()
+  techId!: number;
 }
 
 // -------------------- CRUD DTO -------------------- //
@@ -61,6 +68,12 @@ export class CreateApplicantDto {
   @ValidateNested()
   @Type(() => UpdateApplicantUserDto)
   user!: UpdateApplicantUserDto;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested()
+  @Type(() => UpdateApplicantTechDto)
+  topTech?: UpdateApplicantTechDto[];
 }
 
 export class UpdateApplicantDto {
@@ -113,4 +126,10 @@ export class UpdateApplicantDto {
   @ValidateNested()
   @Type(() => UpdateApplicantUserDto)
   user?: UpdateApplicantUserDto;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested()
+  @Type(() => UpdateApplicantTechDto)
+  topTech?: UpdateApplicantTechDto[];
 }

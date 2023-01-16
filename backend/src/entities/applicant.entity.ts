@@ -9,6 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Tech } from './tech.entity';
 import { User } from './user.entity';
 
 @Entity()
@@ -56,8 +57,12 @@ export class Applicant {
   deletedAt?: Date;
 
   // -------------------- Relationships -------------------- //
-  // TopTech (5)
-  // @ManyToMany()
+  // Tech
+  @ManyToMany(() => Tech, (tech) => tech.applicants, {
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
+  topTech?: Tech[];
 
   // Description
   // @OneToOne()

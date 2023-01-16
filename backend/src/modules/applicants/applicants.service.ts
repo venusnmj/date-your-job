@@ -14,14 +14,14 @@ export class ApplicantsService {
   // ---------- Applicants READ ---------- //
   async getAll(): Promise<Applicant[]> {
     return await this.applicantsRepository.find({
-      relations: ['user'],
+      relations: ['user', 'topTech'],
     });
   }
   async getAllSoftDeleted(): Promise<Applicant[]> {
     return (
       await this.applicantsRepository.find({
         withDeleted: true,
-        relations: ['user'],
+        relations: ['user', 'topTech'],
       })
     ).filter((applicant) => applicant.deletedAt != null);
   }
@@ -29,7 +29,7 @@ export class ApplicantsService {
   async getOneById(applicantId: number): Promise<Applicant> {
     return await this.applicantsRepository.findOne({
       where: { applicantId },
-      relations: ['user'],
+      relations: ['user', 'topTech'],
     });
   }
 
