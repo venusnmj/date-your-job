@@ -9,10 +9,17 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Res,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { join } from 'path';
+import { of } from 'rxjs';
+import { storage } from '../../common/utils/storage';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import {
   CreateEmployerListingDto,
@@ -92,5 +99,26 @@ export class EmployerListingsController {
     @Param('employerListingId', ParseIntPipe) employerListingId: number,
   ) {
     return await this.employerListingsService.restoreOne(employerListingId);
+  }
+
+  // ---------- Uploads ---------- //
+  @UseGuards(JwtAuthGuard)
+  @Post('upload/:employerListingId')
+  @UseInterceptors(FileInterceptor('file', storage))
+  async uploadFile(
+    @UploadedFile() file,
+    @Param('employerListingId', ParseIntPipe) employerListingId: number,
+  ) {
+    const employerListing: UpdateEmployerListingDto = {
+      employerListingId: employerListingId,
+      image: file.filename,
+    };
+
+    return await this.employerListingsService.updateOne(employerListing);
+  }
+
+  @Get('image/:imagename')
+  findOneImage(@Param('imagename') imagename, @Res() res) {
+    return of(res.sendFile(join(process.cwd(), 'uploads/images/' + imagename)));
   }
 }

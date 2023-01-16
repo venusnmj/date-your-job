@@ -33,6 +33,9 @@ export class EmployerListing {
   @Column()
   jobType!: string;
 
+  @Column({ nullable: true })
+  image?: string;
+
   @CreateDateColumn()
   createdAt!: Date;
 

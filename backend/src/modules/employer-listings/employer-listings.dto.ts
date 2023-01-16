@@ -47,6 +47,10 @@ export class CreateEmployerListingDto {
   @IsString()
   jobType!: string;
 
+  @IsOptional()
+  @IsString()
+  image?: string;
+
   // ---------- Relationships ---------- //
   @IsOptional()
   @IsArray()
@@ -73,11 +77,11 @@ export class UpdateEmployerListingDto {
 
   @IsOptional()
   @IsString()
-  title!: string;
+  title?: string;
 
   @IsOptional()
   @IsString()
-  description!: string;
+  description?: string;
 
   @IsOptional()
   @IsString()
@@ -89,7 +93,11 @@ export class UpdateEmployerListingDto {
 
   @IsOptional()
   @IsString()
-  jobType!: string;
+  jobType?: string;
+
+  @IsOptional()
+  @IsString()
+  image?: string;
 
   // ---------- Relationships ---------- //
   @IsOptional()

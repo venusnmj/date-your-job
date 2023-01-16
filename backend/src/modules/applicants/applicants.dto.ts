@@ -72,6 +72,10 @@ export class CreateApplicantDto {
   @IsString()
   tagline?: string;
 
+  @IsOptional()
+  @IsString()
+  image?: string;
+
   // ---------- Relationships ---------- //
   @IsNotEmpty()
   @ValidateNested()
@@ -141,6 +145,10 @@ export class UpdateApplicantDto {
   @IsOptional()
   @IsString()
   tagline?: string;
+
+  @IsOptional()
+  @IsString()
+  image?: string;
 
   // ---------- Relationships ---------- //
   @IsOptional()

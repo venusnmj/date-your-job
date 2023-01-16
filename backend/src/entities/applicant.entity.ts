@@ -49,6 +49,9 @@ export class Applicant {
   @Column({ nullable: true })
   tagline?: string;
 
+  @Column({ nullable: true })
+  image?: string;
+
   @CreateDateColumn()
   createdAt!: Date;
 

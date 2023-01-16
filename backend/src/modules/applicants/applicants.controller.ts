@@ -9,10 +9,17 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Res,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { join } from 'path';
+import { of } from 'rxjs';
+import { storage } from '../../common/utils/storage';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CreateApplicantDto, UpdateApplicantDto } from './applicants.dto';
 import { ApplicantsService } from './applicants.service';
@@ -72,5 +79,26 @@ export class ApplicantsController {
   @Put('/restore-one/:applicantId')
   async restoreOne(@Param('applicantId', ParseIntPipe) applicantId: number) {
     return await this.applicantsService.restoreOne(applicantId);
+  }
+
+  // ---------- Uploads ---------- //
+  @UseGuards(JwtAuthGuard)
+  @Post('upload/:applicantId')
+  @UseInterceptors(FileInterceptor('file', storage))
+  async uploadFile(
+    @UploadedFile() file,
+    @Param('applicantId', ParseIntPipe) applicantId: number,
+  ) {
+    const applicant: UpdateApplicantDto = {
+      applicantId: applicantId,
+      image: file.filename,
+    };
+
+    return await this.applicantsService.updateOne(applicant);
+  }
+
+  @Get('image/:imagename')
+  findOneImage(@Param('imagename') imagename, @Res() res) {
+    return of(res.sendFile(join(process.cwd(), 'uploads/images/' + imagename)));
   }
 }
