@@ -9,6 +9,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Application } from './application.entity';
+import { PromptResponse } from './prompt-response.entity';
+import { Tech } from './tech.entity';
 import { User } from './user.entity';
 
 @Entity()
@@ -46,6 +49,9 @@ export class Applicant {
   @Column({ nullable: true })
   tagline?: string;
 
+  @Column({ nullable: true })
+  image?: string;
+
   @CreateDateColumn()
   createdAt!: Date;
 
@@ -56,14 +62,26 @@ export class Applicant {
   deletedAt?: Date;
 
   // -------------------- Relationships -------------------- //
-  // TopTech (5)
-  // @ManyToMany()
+  // Tech
+  @ManyToMany(() => Tech, (tech) => tech.applicants, {
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
+  topTech?: Tech[];
 
-  // Description
-  // @OneToOne()
+  // PropmtResponses
+  @OneToMany(
+    () => PromptResponse,
+    (promptResponse) => promptResponse.applicant,
+    { nullable: true },
+  )
+  promptResponses?: PromptResponse[];
 
   // Applications
-  // @OneToMany()
+  @OneToMany(() => Application, (application) => application.applicant, {
+    nullable: true,
+  })
+  applications?: Application[];
 
   // User
   @OneToOne(() => User, (user) => user.applicant)

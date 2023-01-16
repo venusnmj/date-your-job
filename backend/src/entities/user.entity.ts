@@ -43,7 +43,7 @@ export class User {
     nullable: true,
     onDelete: 'CASCADE',
   })
-  @JoinColumn()
+  @JoinColumn({ name: 'applicantId' })
   applicant?: Applicant;
 
   // Employer
@@ -51,6 +51,6 @@ export class User {
     nullable: true,
     onDelete: 'CASCADE',
   })
-  @JoinColumn()
+  @JoinColumn({ name: 'employerId' })
   employer?: Employer;
 }

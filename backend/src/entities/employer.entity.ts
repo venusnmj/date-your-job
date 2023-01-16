@@ -8,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { EmployerListing } from './employerlisting.entity';
 import { User } from './user.entity';
 
 @Entity()
@@ -38,7 +39,12 @@ export class Employer {
 
   // -------------------- Relationships -------------------- //
   // Listings
-  // @OneToMany()
+  @OneToMany(
+    () => EmployerListing,
+    (employerListing) => employerListing.employer,
+    { nullable: true },
+  )
+  listings?: EmployerListing[];
 
   // User
   @OneToOne(() => User, (user) => user.employer)
