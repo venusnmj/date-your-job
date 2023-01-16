@@ -1,6 +1,7 @@
 import React from 'react';
 import { SignInPage } from './pages';
 import { Route, Routes } from 'react-router-dom';
+import { HeartIcon, RejectIcon } from './components';
 
 function App() {
   return (
@@ -8,6 +9,8 @@ function App() {
       <Routes>
         <Route path='/signin' element={<SignInPage />} />
       </Routes>
+      <HeartIcon></HeartIcon>
+      <RejectIcon></RejectIcon>
     </div>
 
   )
