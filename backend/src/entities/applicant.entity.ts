@@ -10,6 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Application } from './application.entity';
+import { PromptResponse } from './prompt-response.entity';
 import { Tech } from './tech.entity';
 import { User } from './user.entity';
 
@@ -65,8 +66,13 @@ export class Applicant {
   })
   topTech?: Tech[];
 
-  // Description
-  // @OneToOne()
+  // PropmtResponses
+  @OneToMany(
+    () => PromptResponse,
+    (promptResponse) => promptResponse.applicant,
+    { nullable: true },
+  )
+  promptResponses?: PromptResponse[];
 
   // Applications
   @OneToMany(() => Application, (application) => application.applicant, {

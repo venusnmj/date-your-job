@@ -14,17 +14,20 @@ class UpdateApplicantUserDto {
   @IsInt()
   userId!: number;
 }
-
 class UpdateApplicantTechDto {
   @IsNotEmpty()
   @IsInt()
   techId!: number;
 }
-
 class UpdateApplicantApplicationsDto {
   @IsNotEmpty()
   @IsInt()
   applicationId!: number;
+}
+class UpdateApplicantPromptResponseDto {
+  @IsNotEmpty()
+  @IsInt()
+  promptResponseId!: number;
 }
 
 // -------------------- CRUD DTO -------------------- //
@@ -86,6 +89,12 @@ export class CreateApplicantDto {
   @ValidateNested()
   @Type(() => UpdateApplicantApplicationsDto)
   applications?: UpdateApplicantApplicationsDto[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested()
+  @Type(() => UpdateApplicantPromptResponseDto)
+  promptResponses?: UpdateApplicantPromptResponseDto[];
 }
 
 export class UpdateApplicantDto {
@@ -150,4 +159,10 @@ export class UpdateApplicantDto {
   @ValidateNested()
   @Type(() => UpdateApplicantApplicationsDto)
   applications?: UpdateApplicantApplicationsDto[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested()
+  @Type(() => UpdateApplicantPromptResponseDto)
+  promptResponses?: UpdateApplicantPromptResponseDto[];
 }

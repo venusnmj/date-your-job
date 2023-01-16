@@ -14,14 +14,32 @@ export class ApplicantsService {
   // ---------- Applicants READ ---------- //
   async getAll(): Promise<Applicant[]> {
     return await this.applicantsRepository.find({
-      relations: ['user', 'topTech', 'applications'],
+      relations: {
+        user: true,
+        topTech: true,
+        applications: {
+          employerListing: true,
+        },
+        promptResponses: {
+          prompt: true,
+        },
+      },
     });
   }
   async getAllSoftDeleted(): Promise<Applicant[]> {
     return (
       await this.applicantsRepository.find({
         withDeleted: true,
-        relations: ['user', 'topTech', 'applications'],
+        relations: {
+          user: true,
+          topTech: true,
+          applications: {
+            employerListing: true,
+          },
+          promptResponses: {
+            prompt: true,
+          },
+        },
       })
     ).filter((applicant) => applicant.deletedAt != null);
   }
@@ -29,7 +47,16 @@ export class ApplicantsService {
   async getOneById(applicantId: number): Promise<Applicant> {
     return await this.applicantsRepository.findOne({
       where: { applicantId },
-      relations: ['user', 'topTech', 'applications'],
+      relations: {
+        user: true,
+        topTech: true,
+        applications: {
+          employerListing: true,
+        },
+        promptResponses: {
+          prompt: true,
+        },
+      },
     });
   }
 
