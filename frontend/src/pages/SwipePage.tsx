@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '../components';
 import { CardProps } from '../components/cards';
+import { HeartIcon, RejectIcon } from '../components/icons';
 
 export const SwipePage = () => {
   
@@ -15,10 +16,22 @@ export const SwipePage = () => {
           {tagName: "HTML"}
         ]
       }
+
+      const [swipeRight, isSwipeRight] = useState(false);
+
+      function toRight(){
+        isSwipeRight(true);
+      }
+
+    
     
       return (
-        <div className="h-screen w-screen flex justify-center items-center">
-          <Card image={cardProp.image} alt={cardProp.alt} cardTitle={cardProp.cardTitle} cardDesc={cardProp.cardDesc} tags={cardProp.tags}/>
+        <div className="h-screen w-screen flex flex-col justify-center items-center bg-blue-500">
+            <Card image={cardProp.image} alt={cardProp.alt} cardTitle={cardProp.cardTitle} cardDesc={cardProp.cardDesc} tags={cardProp.tags}/>
+          <div className='flex relative top-4'>
+            <HeartIcon></HeartIcon>
+            <RejectIcon></RejectIcon>
+          </div>
         </div>
       )
 }
