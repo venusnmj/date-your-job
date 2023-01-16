@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useFetch from './hooks/useFetch';
+import { useFetch } from './hooks';
 
 function App() {
   // const fetch = useFetch();
