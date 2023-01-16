@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { CardBody } from './CardBody';
 import { CardImage } from './CardImage';
 
@@ -8,7 +8,7 @@ const Card = () => {
       <CardImage />
       <CardBody />
     </div>
-  )
-}
+  );
+};
 
 export default Card;

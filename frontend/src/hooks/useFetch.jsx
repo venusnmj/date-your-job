@@ -1,7 +1,7 @@
 import { serverDomainUrl } from '../config/serverDomainUrl';
 
 // Helper functions
-const handleResponse = async (response) => {
+const handleResponse = async response => {
   if (response.ok) return response.json();
 
   // Status not ok
@@ -16,7 +16,7 @@ const handleResponse = async (response) => {
 
 // Custom fetch hook
 const useFetch = () => {
-  const get = async (url) => {
+  const get = async url => {
     const requestOptions = {
       method: 'GET',
       credentials: 'include',
@@ -48,7 +48,7 @@ const useFetch = () => {
   };
 
   // prefixed with underscored because delete is a reserved word in javascript
-  const _delete = async (url) => {
+  const _delete = async url => {
     const requestOptions = {
       method: 'DELETE',
       credentials: 'include',
