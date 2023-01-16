@@ -6,7 +6,7 @@ import { SettingsPage } from './pages/SettingsPage';
 import { Navbar } from './features';
 
 function App() {
-  
+
   return (
     <div className="min-h-screen">
       <Navbar />
