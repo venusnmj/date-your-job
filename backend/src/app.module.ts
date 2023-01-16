@@ -5,6 +5,7 @@ import ormconfig from './configs/ormconfig';
 import { ApplicantsModule } from './modules/applicants/applicants.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { EmployersModule } from './modules/employers/employers.module';
+import { TechModule } from './modules/tech/tech.module';
 import { UsersModule } from './modules/users/users.module';
 
 @Module({
@@ -29,6 +30,7 @@ import { UsersModule } from './modules/users/users.module';
     UsersModule,
     ApplicantsModule,
     EmployersModule,
+    TechModule,
   ],
 })
 export class AppModule {}
