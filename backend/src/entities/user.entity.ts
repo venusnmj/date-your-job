@@ -39,7 +39,10 @@ export class User {
 
   // -------------------- Relationships -------------------- //
   // Applicant
-  @OneToOne(() => Applicant, (applicant) => applicant.user, { nullable: true })
+  @OneToOne(() => Applicant, (applicant) => applicant.user, {
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   applicant?: Applicant;
 
