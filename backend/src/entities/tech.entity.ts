@@ -9,6 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Applicant } from './applicant.entity';
+import { EmployerListing } from './employerlisting.entity';
 
 @Entity()
 export class Tech {
@@ -43,5 +44,15 @@ export class Tech {
   applicants?: Applicant[];
 
   // EmployerListing
-  // @ManyToMany()
+  @ManyToMany(
+    () => EmployerListing,
+    (employerListing) => employerListing.tech,
+    { nullable: true },
+  )
+  @JoinTable({
+    name: 'employerlistings_tech',
+    joinColumn: { name: 'employerListingId' },
+    inverseJoinColumn: { name: 'techId' },
+  })
+  employerListings?: EmployerListing[];
 }

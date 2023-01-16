@@ -14,6 +14,11 @@ class UpdateTechApplicantDto {
   @IsInt()
   applicantId!: number;
 }
+class UpdateTechEmployerListingDto {
+  @IsNotEmpty()
+  @IsInt()
+  employerListingId!: number;
+}
 
 // -------------------- CRUD DTO -------------------- //
 export class CreateTechDto {
@@ -31,6 +36,12 @@ export class CreateTechDto {
   @ValidateNested()
   @Type(() => UpdateTechApplicantDto)
   applicants?: UpdateTechApplicantDto[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested()
+  @Type(() => UpdateTechEmployerListingDto)
+  employerListings?: UpdateTechEmployerListingDto[];
 }
 
 export class UpdateTechDto {
@@ -52,4 +63,10 @@ export class UpdateTechDto {
   @ValidateNested()
   @Type(() => UpdateTechApplicantDto)
   applicants?: UpdateTechApplicantDto[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested()
+  @Type(() => UpdateTechEmployerListingDto)
+  employerListings?: UpdateTechEmployerListingDto[];
 }

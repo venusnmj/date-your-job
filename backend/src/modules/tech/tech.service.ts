@@ -14,14 +14,14 @@ export class TechService {
   // ---------- Tech READ ---------- //
   async getAll(): Promise<Tech[]> {
     return await this.techRepository.find({
-      relations: ['applicants'],
+      relations: ['applicants', 'employerListings'],
     });
   }
   async getAllSoftDeleted(): Promise<Tech[]> {
     return (
       await this.techRepository.find({
         withDeleted: true,
-        relations: ['applicants'],
+        relations: ['applicants', 'employerListings'],
       })
     ).filter((tech) => tech.deletedAt != null);
   }
@@ -29,7 +29,7 @@ export class TechService {
   async getOneById(techId: number): Promise<Tech> {
     return await this.techRepository.findOne({
       where: { techId },
-      relations: ['applicants'],
+      relations: ['applicants', 'employerListings'],
     });
   }
 
