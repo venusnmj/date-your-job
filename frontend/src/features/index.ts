@@ -1,2 +1,2 @@
-export { Navbar } from './navbar';
+export { Navbar, NavbarMobile } from './navbar';
 export { SignInForm } from './auth';
