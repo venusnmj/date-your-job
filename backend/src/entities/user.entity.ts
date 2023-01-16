@@ -47,7 +47,10 @@ export class User {
   applicant?: Applicant;
 
   // Employer
-  @OneToOne(() => Employer, (employer) => employer.user, { nullable: true })
+  @OneToOne(() => Employer, (employer) => employer.user, {
+    nullable: true,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn()
   employer?: Employer;
 }
