@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { SignUpPage } from './pages/SignUpPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { Navbar, NavbarMobile } from './features';
+import { SwipePage } from './pages/SwipePage';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />}/>
         <Route path="/settings" element={<SettingsPage />}/>
         <Route path="/applied" element={<AppliedPage />}/>
+        <Route path='/' element={<SwipePage />} />
       </Routes>
       <NavbarMobile />
     </div>

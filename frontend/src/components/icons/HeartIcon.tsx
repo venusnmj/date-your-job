@@ -1,11 +1,14 @@
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
 
-interface HeartIconProps {}
+export interface HeartIconProps {
 
-const HeartIcon = (props: HeartIconProps) => {
+}
+
+export const HeartIcon = (props: HeartIconProps) => {
+
   return <div>
-    <button className='text-red-500  hover:bg-gray-200 hover:text-red-800 rounded-full h-10 w-10 flex items-center justify-center shadow-md' ><FaHeart /></button>
+    <button className='text-red-500 bg-white  hover:bg-gray-200 hover:text-red-800 rounded-full h-16 w-16 text-2xl flex items-center justify-center shadow-md mr-4'><FaHeart /></button>
   </div>
   };
 
