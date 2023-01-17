@@ -69,6 +69,8 @@ Profile question prompts that applicants can answer to showcase and promote thei
 
 ## 🏗️ App Architecture
 
+### Entity Relationship Diagram
+
 <p align="center">
     <img src="public/erd-diagram.png" alt="diagram" />
 </p>
