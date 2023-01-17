@@ -23,7 +23,7 @@ const Navbar = (props: NavbarProps) => {
       <div className="flex flex-row justify-center gap-[36px] md:gap-[72px]">
         <a href="/" className="text-2xl font-bold hover:text-amber-400 cursor-pointer">DateYourJob</a>
         <div className="gap-8 md:gap-12 items-center hidden md:flex">
-          <a href="/discover" className="py-[6px] px-[8px] font-bold hover:text-amber-400 cursor-pointer">01. Discover</a>
+          <a href="/" className="py-[6px] px-[8px] font-bold hover:text-amber-400 cursor-pointer">01. Discover</a>
           <a href="/applied" className="py-[6px] px-[8px] font-bold hover:text-amber-400 cursor-pointer">02. Applied</a>
         </div>
       </div>

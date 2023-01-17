@@ -16,7 +16,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />}/>
         <Route path="/settings" element={<SettingsPage />}/>
         <Route path="/applied" element={<AppliedPage />}/>
-        <Route path='/home' element={<SwipePage />} />
+        <Route path='/' element={<SwipePage />} />
       </Routes>
       <NavbarMobile />
     </div>
