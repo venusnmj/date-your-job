@@ -38,7 +38,7 @@
 ## 👋🏻 Introducing `DateYourJob`
 
 <p align="center">
-    <img src="public/landing.png" alt="landing" width=800 />
+    <img src="public/thumbnail.png" alt="thumbnail" width=800 />
 </p>
 
 Tired of applying for jobs endlessly but just to get ghosted in the end, wasting your time and effort in applying and preparing for the jobs?
